@@ -49,4 +49,13 @@ public class CaninoService {
         return caninoRepository.findAll();
     }
     
+    public ResponseEntity<Canino> excluirCanino(Integer id) {
+        if (caninoRepository.existsById(id)) {
+        	caninoRepository.deleteById(id);
+        	return ResponseEntity.noContent().build();
+        }
+        
+        return ResponseEntity.notFound().build();
+    }
+    
 }
